@@ -264,3 +264,117 @@ body {
 .counter-panel .remove-counter-button:hover {
   background: #fecaca;
 }
+/* Form có thêm select nên cho phép xuống dòng */
+.todo-form {
+  flex-wrap: wrap;
+}
+
+.todo-form select {
+  min-width: 100px;
+  padding: 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  color: #1e293b;
+  background: white;
+  font: inherit;
+}
+
+.todo-form select:focus-visible,
+.todo-edit-input:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 2px;
+}
+
+/* Nội dung bên trái nút Delete */
+.todo-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+}
+
+.todo-checkbox {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: #2563eb;
+  cursor: pointer;
+}
+
+.todo-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Ghi đè style button chung cho tên todo */
+.todo-panel .todo-title {
+  max-width: 100%;
+  padding: 0;
+  border: none;
+  border-radius: 3px;
+  background: transparent;
+  color: #1e293b;
+  font-weight: 400;
+  text-align: left;
+  overflow-wrap: anywhere;
+  cursor: text;
+}
+
+.todo-panel .todo-title:hover {
+  color: #2563eb;
+  background: transparent;
+}
+
+.todo-panel .todo-title:active {
+  transform: none;
+}
+
+.todo-panel .todo-title.completed {
+  color: #94a3b8;
+  text-decoration: line-through;
+}
+
+.todo-edit-input {
+  width: 100%;
+  min-width: 0;
+  padding: 7px 9px;
+  border: 1px solid #2563eb;
+  border-radius: 6px;
+  font: inherit;
+}
+
+/* Tag ưu tiên */
+.priority-tag {
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.priority-low {
+  color: #15803d;
+  background: #dcfce7;
+}
+
+.priority-medium {
+  color: #92400e;
+  background: #fef3c7;
+}
+
+.priority-high {
+  color: #b91c1c;
+  background: #fee2e2;
+}
+
+
+.todo-item.todo-priority-high {
+  border-left: 4px solid #dc2626;
+  background: #fff1f2;
+}
