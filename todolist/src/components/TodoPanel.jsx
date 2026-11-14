@@ -4,6 +4,7 @@ import "../styles/TodoPanel.css";
 function TodoPanel() {
   const [todos, setTodos] = useState([]);
   const [title, setTitle] = useState("");
+  const [filter, setFilter] = useState("all");
 
   function handleAddTodo(event) {
     event.preventDefault();
@@ -37,6 +38,16 @@ function TodoPanel() {
     );
   }
 
+  const filteredTodos = todos.filter((todo) => {
+    if (filter === "active") return !todo.completed;
+    if (filter === "completed") return todo.completed;
+    return true;
+  });
+
+  const total = todos.length;
+  const completed = todos.filter((todo) => todo.completed).length;
+  const remaining = total - completed;
+
   return (
     <div className="panel todo-panel">
       <h2>Todo Panel</h2>
@@ -53,10 +64,41 @@ function TodoPanel() {
         <button type="submit">Add Todo</button>
       </form>
 
-      <div className="todo-list">
-        {todos.length === 0 && <p>Chưa có công việc nào.</p>}
+      <div className="todo-filters">
+        <button
+          type="button"
+          className={filter === "all" ? "active" : ""}
+          aria-pressed={filter === "all"}
+          onClick={() => setFilter("all")}
+        >
+          All
+        </button>
 
-        {todos.map((todo) => (
+        <button
+          type="button"
+          className={filter === "active" ? "active" : ""}
+          aria-pressed={filter === "active"}
+          onClick={() => setFilter("active")}
+        >
+          Active
+        </button>
+
+        <button
+          type="button"
+          className={filter === "completed" ? "active" : ""}
+          aria-pressed={filter === "completed"}
+          onClick={() => setFilter("completed")}
+        >
+          Completed
+        </button>
+      </div>
+
+      <div className="todo-list">
+        {filteredTodos.length === 0 && (
+          <p>Không có công việc nào trong bộ lọc này.</p>
+        )}
+
+        {filteredTodos.map((todo) => (
           <div className="todo-item" key={todo.id}>
             <label className="todo-label">
               <input
@@ -79,6 +121,12 @@ function TodoPanel() {
             </button>
           </div>
         ))}
+      </div>
+
+      <div className="todo-stats">
+        <p>Total: <strong>{total}</strong></p>
+        <p>Completed: <strong>{completed}</strong></p>
+        <p>Remaining: <strong>{remaining}</strong></p>
       </div>
     </div>
   );
