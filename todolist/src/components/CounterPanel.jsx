@@ -4,29 +4,31 @@ import CounterControls from "./CounterControls";
 
 function CounterPanel() {
   const [count, setCount] = useState(0);
+  const [step, setStep] = useState(1);
+  const [countError, setCountError] = useState(false);
 
-  function handleIncrease() {
-    setCount((prevCount) => prevCount + 1);
-  }
+  function handleCountChange(newCount) {
+    if (newCount > 10 || newCount < -10) {
+      setCountError(true);
+      return;
+    }
 
-  function handleDecrease() {
-    setCount((prevCount) => prevCount - 1);
-  }
-
-  function handleReset() {
-    setCount(0);
+    setCountError(false);
+    setCount(newCount);
   }
 
   return (
     <div className="panel counter-panel">
       <h2>Counter Panel</h2>
 
-      <CounterDisplay count={count} />
+      <CounterDisplay count={count} countError={countError} />
 
       <CounterControls
-        onIncrease={handleIncrease}
-        onDecrease={handleDecrease}
-        onReset={handleReset}
+        step={step}
+        onStepChange={setStep}
+        onIncrease={() => handleCountChange(count + step)}
+        onDecrease={() => handleCountChange(count - step)}
+        onReset={() => handleCountChange(0)}
       />
     </div>
   );

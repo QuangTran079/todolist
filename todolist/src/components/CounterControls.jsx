@@ -1,18 +1,39 @@
-function CounterControls({ onIncrease, onDecrease, onReset }) {
+function CounterControls({
+  step,
+  onStepChange,
+  onIncrease,
+  onDecrease,
+  onReset,
+}) {
   return (
-    <div className="counter-controls">
+    <>
+      <div>
+        <label htmlFor="counter-step">Step</label>
+
+        <select
+          id="counter-step"
+          name="step"
+          value={step}
+          onChange={(event) => onStepChange(Number(event.target.value))}
+        >
+          <option value="1">1</option>
+          <option value="5">5</option>
+          <option value="10">10</option>
+        </select>
+      </div>
+
+      <button type="button" onClick={onIncrease}>
+        Tăng +{step}
+      </button>
+
       <button type="button" onClick={onDecrease}>
-        -1
+        Giảm -{step}
       </button>
 
       <button type="button" onClick={onReset}>
         Reset
       </button>
-
-      <button type="button" onClick={onIncrease}>
-        +1
-      </button>
-    </div>
+    </>
   );
 }
 
