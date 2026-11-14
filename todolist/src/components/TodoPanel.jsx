@@ -8,7 +8,7 @@ function TodoPanel() {
   const [todos, setTodos] = useState([]);
   const [filter, setFilter] = useState("all");
 
-  function handleAddTodo(title) {
+  function handleAddTodo(title, priority) {
     const trimmedTitle = title.trim();
     if (!trimmedTitle) return;
 
@@ -16,25 +16,32 @@ function TodoPanel() {
       id: crypto.randomUUID(),
       title: trimmedTitle,
       completed: false,
+      priority,
     };
 
     setTodos((prevTodos) => [...prevTodos, newTodo]);
+  }
+  function handleEditTodo(id, newTitle) {
+    const trimmedTitle = newTitle.trim();
+    if (!trimmedTitle) return;
+
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) =>
+        todo.id === id ? { ...todo, title: trimmedTitle } : todo,
+      ),
+    );
   }
 
   function handleToggleTodo(id) {
     setTodos((prevTodos) =>
       prevTodos.map((todo) =>
-        todo.id === id
-          ? { ...todo, completed: !todo.completed }
-          : todo
-      )
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo,
+      ),
     );
   }
 
   function handleDeleteTodo(id) {
-    setTodos((prevTodos) =>
-      prevTodos.filter((todo) => todo.id !== id)
-    );
+    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
   }
 
   const filteredTodos = todos.filter((todo) => {
@@ -75,13 +82,10 @@ function TodoPanel() {
         todos={filteredTodos}
         onToggle={handleToggleTodo}
         onDelete={handleDeleteTodo}
+        onEdit={handleEditTodo}
       />
 
-      <TodoStats
-        total={total}
-        completed={completed}
-        remaining={remaining}
-      />
+      <TodoStats total={total} completed={completed} remaining={remaining} />
     </div>
   );
 }
