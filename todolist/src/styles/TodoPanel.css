@@ -96,3 +96,33 @@
 .todo-stats p {
   margin: 0;
 }
+.counter-panel {
+  padding: 24px;
+  text-align: center;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+}
+
+.counter-value {
+  margin: 20px 0;
+  color: #2563eb;
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.counter-controls {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.counter-controls button {
+  padding: 10px 18px;
+  color: white;
+  background: #2563eb;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
