@@ -66,3 +66,33 @@
   flex-shrink: 0;
   background: #dc2626;
 }
+.todo-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.todo-panel .todo-filters button {
+  color: #334155;
+  background: #e2e8f0;
+}
+
+.todo-panel .todo-filters button.active {
+  color: white;
+  background: #2563eb;
+}
+
+.todo-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  margin-top: 20px;
+  padding: 16px;
+  background: #f1f5f9;
+  border-radius: 8px;
+}
+
+.todo-stats p {
+  margin: 0;
+}
