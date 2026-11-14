@@ -1,19 +1,15 @@
-
-import './App.css'
-import CounterPanel from './components/CounterPanel'
-import TodoPanel from './components/TodoPanel'
-import AppLayout from './layouts/AppLayout'
+import "./App.css";
+import TodoPanel from "./components/TodoPanel";
+import CounterPage from "./components/CounterPage";
+import AppLayout from "./layouts/AppLayout";
 
 function App() {
-
   return (
-    <>
-      <AppLayout>
-        <TodoPanel />
-        <CounterPanel />
-      </AppLayout>
-    </>
-  )
+    <AppLayout>
+      <TodoPanel />
+      <CounterPage />
+    </AppLayout>
+  );
 }
 
-export default App
+export default App;

@@ -1,5 +1,6 @@
 function CounterControls({
   step,
+  stepId,
   onStepChange,
   onIncrease,
   onDecrease,
@@ -8,13 +9,14 @@ function CounterControls({
   return (
     <>
       <div>
-        <label htmlFor="counter-step">Step</label>
+        <label htmlFor={stepId}>Step</label>
 
         <select
-          id="counter-step"
-          name="step"
+          id={stepId}
           value={step}
-          onChange={(event) => onStepChange(Number(event.target.value))}
+          onChange={(event) =>
+            onStepChange(Number(event.target.value))
+          }
         >
           <option value="1">1</option>
           <option value="5">5</option>
