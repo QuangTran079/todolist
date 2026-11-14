@@ -193,3 +193,74 @@ body {
   outline: 3px solid #2563eb;
   outline-offset: 3px;
 }
+.counter-page {
+  min-width: 0;
+}
+
+.counter-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.counter-page-header h2 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.add-counter-button {
+  padding: 11px 16px;
+  color: white;
+  background: #16a34a;
+  border: none;
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.add-counter-button:hover {
+  background: #15803d;
+}
+
+.add-counter-button:active {
+  transform: scale(0.96);
+}
+
+.add-counter-button:focus-visible {
+  outline: 3px solid #2563eb;
+  outline-offset: 3px;
+}
+
+.counter-list {
+  display: grid;
+  gap: 20px;
+}
+
+.counter-empty {
+  margin: 0;
+  padding: 24px;
+  color: #64748b;
+  text-align: center;
+  background: white;
+  border: 1px dashed #cbd5e1;
+  border-radius: 12px;
+}
+
+.counter-panel .counter-error {
+  color: #dc2626;
+}
+
+.counter-panel .remove-counter-button {
+  margin-top: 16px;
+  color: #dc2626;
+  background: #fee2e2;
+}
+
+.counter-panel .remove-counter-button:hover {
+  background: #fecaca;
+}

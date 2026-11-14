@@ -2,10 +2,14 @@ import { useState } from "react";
 import CounterDisplay from "./CounterDisplay";
 import CounterControls from "./CounterControls";
 
-function CounterPanel() {
-  const [count, setCount] = useState(0);
-  const [step, setStep] = useState(1);
+function CounterPanel({
+  counter,
+  onCountChange,
+  onStepChange,
+  onRemove,
+}) {
   const [countError, setCountError] = useState(false);
+  const { id, label, count, step } = counter;
 
   function handleCountChange(newCount) {
     if (newCount > 10 || newCount < -10) {
@@ -14,22 +18,31 @@ function CounterPanel() {
     }
 
     setCountError(false);
-    setCount(newCount);
+    onCountChange(id, newCount);
   }
 
   return (
     <div className="panel counter-panel">
-      <h2>Counter Panel</h2>
+      <h2>{label}</h2>
 
       <CounterDisplay count={count} countError={countError} />
 
       <CounterControls
         step={step}
-        onStepChange={setStep}
+        onStepChange={(newStep) => onStepChange(id, newStep)}
         onIncrease={() => handleCountChange(count + step)}
         onDecrease={() => handleCountChange(count - step)}
         onReset={() => handleCountChange(0)}
+        stepId={`counter-step-${id}`}
       />
+
+      <button
+        type="button"
+        className="remove-counter-button"
+        onClick={() => onRemove(id)}
+      >
+        Remove
+      </button>
     </div>
   );
 }
